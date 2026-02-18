@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rawat Alasal Tech Tricks | حجز الطلب</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="شعار الشركة">
+                <span>روعة العسل</span>
+            </a>
+
+            <div class="hamburger">&#9776;</div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="products.html" class="nav-link">المنتجات</a></li>
+
+                <li><a href="order.html" class="nav-link active">حجز الطلب</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">حجز الطلب</h2>
+
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+
+            <!-- Order Form -->
+            <div
+                style="flex: 1; min-width: 300px; background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+                <form id="order-form">
+                    <div class="form-group">
+                        <label for="order-name" class="form-label">الاسم الكامل *</label>
+                        <input type="text" id="order-name" class="form-control" placeholder="أدخل اسمك الثلاثي"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-phone" class="form-label">رقم الهاتف *</label>
+                        <input type="tel" id="order-phone" class="form-control" placeholder="077********" required
+                            pattern="[0-9+\s]*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-address" class="form-label">العنوان الكامل *</label>
+                        <input type="text" id="order-address" class="form-control"
+                            placeholder="المحافظة - المنطقة - أقرب نقطة دالة" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-product" class="form-label">المنتج *</label>
+                        <select id="order-product" class="form-control" required>
+                            <option value="">جاري تحميل المنتجات...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-quantity" class="form-label">العدد (الكمية) *</label>
+                        <input type="number" id="order-quantity" class="form-control" value="1" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="order-notes" class="form-label">ملاحظات إضافية</label>
+                        <textarea id="order-notes" class="form-control" rows="3"
+                            placeholder="أي تفاصيل أخرى"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-whatsapp"
+                        style="width: 100%; justify-content: center; display: flex; align-items: center; gap: 10px;">
+                        <i class="fab fa-whatsapp"></i>
+                        إرسال الطلب عبر واتساب
+                    </button>
+                    <p style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #666;">
+                        سيتم فتح تطبيق واتساب لإرسال تفاصيل طلبك مباشرة.
+                    </p>
+                </form>
+            </div>
+
+            <!-- Product Preview -->
+            <div id="product-preview" class="hidden" style="width: 300px;">
+                <h3 style="text-align: center; margin-bottom: 1rem;">المنتج المختار</h3>
+                <div class="card" style="flex-direction: column;">
+                    <img id="preview-img" src="" alt="preview" class="card-img" style="height: 200px;">
+                    <div class="card-content">
+                        <span id="preview-cat" class="card-category"></span>
+                        <h3 id="preview-title" class="card-title"></h3>
+                        <div style="color: green; font-weight: bold; margin-top: 10px;">
+                            <i class="fas fa-check-circle"></i> تم الاختيار
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Admin Orders List -->
+        <div class="admin-only hidden" style="margin-top: 3rem;">
+            <h2 style="text-align: center;">الطلبات الأخيرة</h2>
+            <div style="overflow-x: auto; border-radius: var(--border-radius); box-shadow: var(--shadow-sm);">
+                <table style="width: 100%; border-collapse: collapse; background: white; min-width: 600px;">
+                    <thead>
+                        <tr style="background: var(--secondary-color); color: white; text-align: right;">
+                            <th style="padding: 15px;">التاريخ</th>
+                            <th style="padding: 15px;">الاسم</th>
+                            <th style="padding: 15px;">الهاتف</th>
+                            <th style="padding: 15px;">المنتج</th>
+                            <th style="padding: 15px;">العدد</th>
+                            <th style="padding: 15px;">إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-table-body">
+                        <!-- JS Populate -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>روعة العسل</h3>
+                    <p>الخيار الأمثل لمواد التجميل والعناية.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+
+                        <li><a href="order.html">حجز الطلب</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <p>واتساب: 07713390381</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Rawat Alasal Tech Tricks.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/order.js"></script>
+</body>
+
+</html>

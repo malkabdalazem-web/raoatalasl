@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rawat Alasal Tech Tricks | المنتجات</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="شعار الشركة">
+                <span>روعة العسل</span>
+            </a>
+
+            <div class="hamburger">&#9776;</div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="products.html" class="nav-link active">المنتجات</a></li>
+
+                <li><a href="order.html" class="nav-link">حجز الطلب</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">منتجاتنا المميزة</h2>
+
+        <!-- Categories -->
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">الكل</button>
+            <button class="filter-btn" data-category="كريمات">كريمات</button>
+            <button class="filter-btn" data-category="الشعر">الشعر</button>
+            <button class="filter-btn" data-category="غسول">غسول</button>
+            <button class="filter-btn" data-category="مجموعة العناية">مجموعة العناية</button>
+        </div>
+
+        <!-- Admin Only Button -->
+        <div class="admin-only hidden" style="text-align:center; margin-bottom: 2rem;">
+            <button id="add-product-btn" class="btn btn-secondary">
+                <i class="fas fa-plus"></i> إضافة منتج جديد
+            </button>
+            <button id="clear-all-btn" class="btn btn-danger">
+                <i class="fas fa-trash"></i> مسح الكل
+            </button>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" class="cards-container">
+            <!-- Products will be injected here via JS -->
+            <div style="text-align:center; padding: 2rem;">جاري تحميل المنتجات...</div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal-overlay">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-header">
+                <h3 id="modal-title">إضافة منتج</h3>
+                <button class="close-modal" aria-label="إغلاق">&times;</button>
+            </div>
+            <form id="product-form">
+                <div class="form-group">
+                    <label for="p-image" class="form-label">صورة المنتج</label>
+                    <input type="file" id="p-image" class="form-control" accept="image/*">
+                    <small style="color:red">ملاحظة: الصور الكبيرة قد تؤثر على سرعة تحميل الموقع.</small>
+                </div>
+                <div class="form-group">
+                    <label for="p-title" class="form-label">عنوان المنتج *</label>
+                    <input type="text" id="p-title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="p-category" class="form-label">التصنيف *</label>
+                    <select id="p-category" class="form-control" required>
+                        <option value="كريمات">كريمات</option>
+                        <option value="الشعر">الشعر</option>
+                        <option value="غسول">غسول</option>
+                        <option value="مجموعة العناية">مجموعة العناية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="p-desc" class="form-label">وصف مختصر</label>
+                    <textarea id="p-desc" class="form-control" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%">حفظ</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>روعة العسل</h3>
+                    <p>الخيار الأمثل لمواد التجميل والعناية.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+
+                        <li><a href="order.html">حجز الطلب</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تواصل معنا</h3>
+                    <p>واتساب: 07713390381</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Rawat Alasal Tech Tricks.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+
+</html>
