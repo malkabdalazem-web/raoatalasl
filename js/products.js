@@ -23,6 +23,21 @@ async function loadProducts() {
             await seedData();
             currentProducts = await Storage.getProducts();
         }
+
+        // Ensure Specific Care Product Exists (User Request)
+        const careSetId = 'care-set-1';
+        if (!currentProducts.some(p => p.id === careSetId)) {
+            const careProduct = {
+                id: careSetId,
+                title: 'مجموعة العناية المتكاملة',
+                category: 'مجموعة العناية',
+                desc: 'مجموعة متكاملة للعناية بالبشرة، تحتوي على غسول، سيروم، كريم ليلي ونهاري لترطيب ونضارة فائقة.',
+                imageDataUrl: 'assets/care_collection_set.png',
+                createdAt: new Date().toISOString()
+            };
+            await Storage.saveProduct(careProduct);
+            currentProducts = await Storage.getProducts();
+        }
     } catch (e) {
         console.error("Failed to load products", e);
         currentProducts = [];

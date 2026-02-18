@@ -45,6 +45,12 @@ html {
 body {
     font-family: var(--font-main);
     background-color: #f9fafb;
+    /* Background Image setup */
+    background-image: url('../assets/site_background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Ensure text readability with potential overlay if needed, but starting with requested image */
     color: var(--text-dark);
     direction: rtl;
     /* RIGHT TO LEFT FOR ARABIC */
